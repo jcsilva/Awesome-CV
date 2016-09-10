@@ -524,6 +524,37 @@
   \vspace{2mm}
 }
 
+
+
+
+% Define an environment for cvpublications
+\newenvironment{cvpublications}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \cvpublication{<position>}{<title>}{<location>}{<date>}{<description>}
+\newcommand*{\cvpublication}[5]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth} R{4.5cm}}
+    \ifempty{#2#3}
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+  \end{tabular*}%
+}
+
+
+
+
+
+
+
 % Define an environment for cventry
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
@@ -605,6 +636,27 @@
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
+
+
+% Define an environment for cvinterests
+\newenvironment{cvinterests}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{center}
+    \setlength\tabcolsep{0ex}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{L{\textwidth}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information(interest)
+% Usage: \cvinterest{<interest>}
+\newcommand*{\cvinterest}[1]{%
+        \skillsetstyle{#1} \\
+}
+
+
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
